@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ブロック崩し</title>
+  </head>
+  <body>
+    <script>
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = 400;
+      canvas.height = 400;
+
+      canvas.setAttribute(
+        "style",
+        "display:block; margin:auto;background-color: #A4C6FF"
+      );
+      document.body.appendChild(canvas);
+
+      const ball = {};
+      const paddle = {
+        x: null,
+        y: null,
+        width: 100,
+        height: 15,
+        speed: 0,
+
+        update: function () {
+          ctx.fillRect(this.x, this.y, this.width, this.height);
+          ctx.fill();
+
+          this.x += this.speed;
+        },
+      };
+      const block = {};
+      const level = {};
+
+      const init = () => {
+        paddle.x = canvas.width / 2 - paddle.width / 2;
+        paddle.y = canvas.height - paddle.height;
+      };
+      const collode = () => {};
+      const loop = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        paddle.update();
+
+        window.requestAnimationFrame(loop);
+      };
+
+      init();
+      loop();
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key == "ArrowLeft") paddle.speed = -6;
+        if (e.key == "ArrowRight") paddle.speed = 6;
+      });
+      document.addEventListener("keyup", () => (paddle.speed = 0));
+    </script>
+  </body>
+</html>
