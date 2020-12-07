@@ -3,10 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
     <title>ブロック崩し</title>
   </head>
   <body>
+    <!-- <img id="img" src="/img/img.jpg" alt="img" /> -->
     <script>
+      const img = document.getElementById("img");
+
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
 
@@ -15,8 +19,11 @@
 
       canvas.setAttribute(
         "style",
-        "display:block; margin:auto;background-color: #A4C6FF"
+        "display:block; margin:auto;background-image:url(img/img.jpg)"
+
+        // "display:block; margin:auto;background-color: #A4C6FF"
       );
+      console.log(img);
       document.body.appendChild(canvas);
 
       const ball = {};
